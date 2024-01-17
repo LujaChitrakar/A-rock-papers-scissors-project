@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rock , Paper and Scissors</title>
+    <style>
+      body {
+        background-color: rgb(50, 119, 230);
+        font-family: "Times New Roman", Times, serif;
+        text-align: center;
+        justify-content: center;
+      }
+      input {
+        border-radius: 8px;
+        padding-right: 100px;
+        padding: 15px;
+        font-size: 20px;
+        justify-content: center;
+      }
+      button {
+        margin-top: 30px;
+        padding: 12px;
+        font-size: 20px;
+        border-radius: 12px;
+      }
+      h1 {
+        margin-top: 55px;
+        font-size: 52px;
+      }
+      h2 {
+        font-size: 42px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Choose Rock, Paper or Scissors</h1>
+    <input type="text" id="text" /><br />
+    <button onclick="game()">submit</button>
+
+    <h2 id="output"></h2>
+    <script>
+      function game() {
+        playerselect = document.getElementById("text").value;
+        function getcomputerChoice() {
+          let randomNumber = Math.floor(Math.random() * 3);
+          switch (randomNumber) {
+            case 0:
+              return "rock";
+            case 1:
+              return "paper";
+            case 2:
+              return "scissors";
+          }
+        }
+        function playround(playerselection, computerselection) {
+          if (playerselection == "rock" && computerselection == "scissors") {
+            return "You win! rock beats scissors";
+          } else if (
+            playerselection === "rock" &&
+            computerselection === "paper"
+          ) {
+            return "You lose!  paper beats rock";
+          } else if (
+            playerselection === "paper" &&
+            computerselection === "scissors"
+          ) {
+            return "You lose! scissors beats paper";
+          } else if (
+            playerselection === "paper" &&
+            computerselection === "rock"
+          ) {
+            return "You win! paper beats rock";
+          } else if (
+            playerselection === "scissors" &&
+            computerselection === "rock"
+          ) {
+            return "You lose! rock beats scissors";
+          } else if (
+            playerselection === "scissors" &&
+            computerselection === "paper"
+          ) {
+            return "You win! scissors beats paper";
+          } else {
+            return "Try again";
+          }
+        }
+
+        computerselection = getcomputerChoice();
+
+        document.getElementById("output").innerHTML = playround(
+          playerselect,
+          computerselection
+        );
+        console.log(getcomputerChoice());
+      }
+    </script>
+  </body>
+</html>
